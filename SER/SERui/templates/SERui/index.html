@@ -1,0 +1,39 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Recorder</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="icon" type="image/png" href="{% static 'img/rec.png' %}">
+</head>
+
+<body>
+    <header>
+        <a href="/"> <img class="home" src="{% static 'img/home.svg' %}" alt="home"></a>
+    </header>
+    <div class="console">
+        <div class="div-title">
+            <img src="{% static 'img/music.svg' %}" alt="music" class="music">
+            <h1 class="title">Media Recorder</h1>
+        </div>
+        <div class="stopwatch"></div>
+        <div class="reset">
+            <a href="rec"> <img class="reset" src="{% static 'img/reset.svg' %}" alt="home"></a>
+        </div>
+
+        <button class="rec">Rec</button>
+        <button class="stop">Stop</button>
+        <!-- <audio class="audio" src="">Audio</audio> -->
+    </div>
+
+    <footer>
+        <div class="devices-status"></div>
+    </footer>
+
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

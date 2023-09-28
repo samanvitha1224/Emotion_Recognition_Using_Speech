@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Speech Emotion recognition</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <style>
+header{height: 50px;
+margin: 22px;
+    background: darkgrey;}
+  h1,p{
+  text-align-last:center;
+  font-family: Ranchers;
+  }
+  #r,p{
+  letter-spacing: 1px;
+  }
+  footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:110px;
+   background: yellowgreen;
+}
+.custom-file-upload {
+    border: 2px solid greenyellow;
+    margin-bottom: 21px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: Ranchers;
+  letter-spacing: 2px;
+}
+#submit {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: Ranchers;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body style="background-color: gainsboro;">
+<header><h1 align="center">Speech Emotion Recognition</h1></header>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form method="post" enctype="multipart/form-data" action="predict" style="text-align-last: center;">
+    {% csrf_token %}
+
+    <div id="f">
+        <label for="file-upload" class="custom-file-upload">
+            <i class="fa fa-cloud-upload"></i> Upload Audio file
+        </label>
+        <input id="file-upload" name='wav_file' type="file" style="display:none;">
+        <!--<a href="rec">new record</a>-->
+    </div>
+    <div id="s">
+        <input type="submit" id="submit" value="predict"/>
+    </div>
+</form>
+<script type="text/javascript">
+  $('#file-upload').change(function() {
+  var i = $(this).prev('label').clone();
+  var file = $('#file-upload')[0].files[0].name;
+  $(this).prev('label').text(file);
+});
+</script>
+<div id="r">
+    {% if trainshape and testshape %}
+    <h1>The shapes of the training and testing datasets are :{{trainshape}},{{testshape}}</h1>
+    {% endif %}
+    {% if fe %}
+    <h1>The number of features extracted :{{fe}}</h1>
+    {% endif %}
+    {% if result %}
+    <h1>The emotion of given sound is :{{result}}</h1>
+    {% endif %}
+    {% if accuracy %}
+    <h1>accuracy of obtained result is :{{accuracy}}</h1>
+    {% endif %}
+</div>
+<footer>
+    <p>&copy 17CSPW-B16</p>
+    <p>project done by D.Sriharsha, CH.Akhil reddy, P.Kranthi</p>
+    <p>Under the guidance of Mr. R. SIVA KUMAR, ASSISTANT PROFESSOR, VARDHAMAN COLLEGE OF ENGINEERING </p>
+</footer>
+</body>
+</html>
